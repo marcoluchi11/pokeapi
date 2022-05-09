@@ -1,23 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+import styled from "@emotion/styled";
+import { useContext } from "react";
+import PokemonList from "./components/PokemonList";
 
+import { PokeContext } from "./context/PokeContext";
+
+const Boton = styled.button`
+  background-color: turquoise;
+  color: white;
+  border-radius: 15px;
+  margin: 1rem;
+  padding: 0 0.5rem;
+  transition: background-color linear 1s;
+  &&:hover {
+    background-color: blue;
+  }
+`;
 function App() {
+  const { data, setData } = useContext(PokeContext);
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Boton onClick={() => setData(data + 1)}>Click</Boton>
+      <PokemonList />
     </div>
   );
 }
