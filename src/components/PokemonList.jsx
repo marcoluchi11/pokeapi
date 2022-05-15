@@ -1,10 +1,16 @@
 import styled from "@emotion/styled";
-import { useContext } from "react";
+import { useContext, useState, useEffect } from "react";
 import { PokeContext } from "../context/PokeContext";
+import { nanoid } from "nanoid";
+
 const Container = styled.div`
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
+  img {
+    height: 15rem;
+    width: 15rem;
+  }
 `;
 const ItemCard = styled.div`
   margin: 1rem;
@@ -22,17 +28,19 @@ const Titulo = styled.h1`
   }
 `;
 const PokemonList = () => {
-  const { list } = useContext(PokeContext);
+  const { list, traerDatos } = useContext(PokeContext);
+
+  useEffect(() => {
+    traerDatos();
+  }, []);
   return (
     <Container>
-      {list.map((item, index) => (
-        <ItemCard>
-          <Titulo>
-            <a href={item.url}>
-              {index + 1} {item.name}
-            </a>
-          </Titulo>
-        </ItemCard>
+      <h1>Holis</h1>
+      {list.map((item) => (
+        <div key={nanoid()}>
+          <img src={item.sprites.front_default} alt="holis" />
+          <h1>{item.name}</h1>
+        </div>
       ))}
     </Container>
   );
