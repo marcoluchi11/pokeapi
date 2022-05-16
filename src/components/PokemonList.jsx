@@ -1,7 +1,9 @@
 import styled from "@emotion/styled";
-import { useContext, useState, useEffect } from "react";
-import { PokeContext } from "../context/PokeContext";
 import { nanoid } from "nanoid";
+import { useContext, useEffect } from "react";
+import { PokeContext } from "../context/PokeContext";
+import PokemonCard from "./PokemonCard";
+import PokemonChosen from "./PokemonChosen";
 
 const Container = styled.div`
   display: flex;
@@ -12,36 +14,21 @@ const Container = styled.div`
     width: 15rem;
   }
 `;
-const ItemCard = styled.div`
-  margin: 1rem;
-  padding: 1rem;
-`;
-const Titulo = styled.h1`
-  a {
-    text-transform: capitalize;
-    text-decoration: none;
-    color: black;
 
-    &:hover {
-      text-decoration: underline;
-    }
-  }
-`;
 const PokemonList = () => {
-  const { list, traerDatos } = useContext(PokeContext);
+  const { list, traerDatos, more, chosen } = useContext(PokeContext);
 
   useEffect(() => {
+    if (list.length > 0) return;
     traerDatos();
   }, []);
   return (
     <Container>
-      <h1>Holis</h1>
-      {list.map((item) => (
-        <div key={nanoid()}>
-          <img src={item.sprites.front_default} alt="holis" />
-          <h1>{item.name}</h1>
-        </div>
-      ))}
+      {more ? (
+        <PokemonChosen chosen={chosen} />
+      ) : (
+        list.map((item) => <PokemonCard key={nanoid()} item={item} />)
+      )}
     </Container>
   );
 };
