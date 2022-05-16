@@ -1,25 +1,17 @@
 import styled from "@emotion/styled";
-import { useContext } from "react";
 import PokemonList from "./components/PokemonList";
 
-import { PokeContext } from "./context/PokeContext";
-
-const Boton = styled.button`
-  background-color: turquoise;
-  color: white;
-  border-radius: 15px;
-  margin: 1rem;
-  padding: 0 0.5rem;
-  transition: background-color linear 1s;
-  &&:hover {
-    background-color: blue;
-  }
+const Titulo = styled.h1`
+  text-align: center;
+  background-color: #b2b2b2;
+  padding: 1rem;
+  margin: 0.5rem;
+  font-size: 5rem;
 `;
 function App() {
-  const { data, setData } = useContext(PokeContext);
   return (
-    <div className="App">
-      <Boton onClick={() => setData(data + 1)}>Click</Boton>
+    <div>
+      <Titulo>Kanto & Johto Pokemon</Titulo>
       <PokemonList />
     </div>
   );
