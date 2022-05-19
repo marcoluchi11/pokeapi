@@ -5,16 +5,17 @@ const PokeProvider = ({ children }) => {
   const [list, setList] = useState([]);
   const [more, setMore] = useState(false);
   const [chosen, setChosen] = useState({});
+  const [search, setSearch] = useState("");
+  const [filter, setFilter] = useState([]);
   const traerDatos = () => {
     let pokedata = [];
     for (let i = 0; i <= 251; i++) {
+      if (i === 0) continue;
       const fetchdata = async () => {
         const url = ` https://pokeapi.co/api/v2/pokemon/${i}`;
         const rta = await fetch(url);
         const datos = await rta.json();
         pokedata.push(datos);
-        // pokedata.sort((a, b) => a - b);
-
         setList(pokedata);
       };
       fetchdata();
@@ -27,9 +28,13 @@ const PokeProvider = ({ children }) => {
         chosen,
         setChosen,
         more,
+        filter,
+        setFilter,
         setMore,
         data,
         setData,
+        search,
+        setSearch,
         list,
         setList,
         traerDatos,
