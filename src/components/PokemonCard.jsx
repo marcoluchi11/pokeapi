@@ -1,11 +1,13 @@
 import styled from "@emotion/styled";
-import { useState, useContext } from "react";
+import { useContext } from "react";
 import { PokeContext } from "../context/PokeContext";
 
 const Container = styled.div`
   margin: 1rem;
   border-radius: 15px;
-
+  box-shadow: 3px 3px 10px 0px rgba(0, 0, 0, 0.75);
+  -webkit-box-shadow: 3px 3px 10px 0px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 3px 3px 10px 0px rgba(0, 0, 0, 0.75);
   img {
     background-color: #c5c5c5;
     border-radius: 15px;
