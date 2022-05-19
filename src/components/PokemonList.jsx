@@ -16,21 +16,35 @@ const Container = styled.div`
 `;
 
 const PokemonList = () => {
-  const { list, traerDatos, more, chosen } = useContext(PokeContext);
+  const { list, traerDatos, more, chosen, filter } = useContext(PokeContext);
 
   useEffect(() => {
     if (list.length > 0) return;
     traerDatos();
+    // setList(list.sort((a, b) => a - b));
+    console.log(list);
   }, []);
-  return (
-    <Container>
-      {more ? (
-        <PokemonChosen chosen={chosen} />
-      ) : (
-        list.map((item) => <PokemonCard key={nanoid()} item={item} />)
-      )}
-    </Container>
-  );
+  if (filter.length === 0)
+    return (
+      <Container>
+        {more ? (
+          <PokemonChosen chosen={chosen} />
+        ) : (
+          list.map((item) => <PokemonCard key={nanoid()} item={item} />)
+        )}
+      </Container>
+    );
+  else {
+    return (
+      <Container>
+        {more ? (
+          <PokemonChosen chosen={chosen} />
+        ) : (
+          filter.map((item) => <PokemonCard key={nanoid()} item={item} />)
+        )}
+      </Container>
+    );
+  }
 };
 
 export default PokemonList;
