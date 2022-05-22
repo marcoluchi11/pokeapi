@@ -9,7 +9,7 @@ const PokeProvider = ({ children }) => {
   const [filter, setFilter] = useState([]);
   const traerDatos = () => {
     let pokedata = [];
-    for (let i = 0; i <= 251; i++) {
+    for (let i = 0; i <= 386; i++) {
       if (i === 0) continue;
       const fetchdata = async () => {
         const url = ` https://pokeapi.co/api/v2/pokemon/${i}`;
