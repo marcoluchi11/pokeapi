@@ -22,7 +22,11 @@
 .bug {
   background-color: #dd07df;
 }
+.ghost {
+  background-color: #c260d3;
+}
 .dark {
+  color: #fff !important;
   background-color: #263029;
 }
 .psychic {
@@ -50,5 +54,6 @@
   background-color: #4bfeb5;
 }
 .steel {
+  color: #fff !important;
   background-color: #5c5a69;
 }
