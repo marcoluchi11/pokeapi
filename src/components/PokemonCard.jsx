@@ -12,7 +12,7 @@ const Container = styled.div`
   img {
     background-color: #c5c5c5;
     border-radius: 15px;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0;
     cursor: pointer;
   }
   div:first-of-type {
