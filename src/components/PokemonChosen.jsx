@@ -2,6 +2,7 @@ import styled from "@emotion/styled";
 import { nanoid } from "nanoid";
 import { useContext } from "react";
 import { PokeContext } from "../context/PokeContext";
+import PokemonType from "./PokemonType";
 const ContainerBoton = styled.div`
   background-color: #000;
   display: flex;
@@ -61,6 +62,11 @@ const PokemonChosen = ({ chosen }) => {
           <img src={item.sprites.front_shiny} alt="pokemon" /> */}
         </Container>
       ))}
+      <div>
+        {chosen.map((item) => (
+          <PokemonType key={nanoid()} item={item} />
+        ))}
+      </div>
       <ContainerBoton onClick={handleClick}>
         <svg
           xmlns="http://www.w3.org/2000/svg"

@@ -1,6 +1,7 @@
 import styled from "@emotion/styled";
 import { useContext } from "react";
 import { PokeContext } from "../context/PokeContext";
+import PokemonType from "./PokemonType";
 
 const Container = styled.div`
   margin: 1rem;
@@ -17,7 +18,7 @@ const Container = styled.div`
   div:first-of-type {
     border-bottom: 3px solid black;
   }
-  div:last-of-type {
+  div:nth-of-type(2) {
     text-align: center;
     font-weight: 700;
     span {
@@ -28,6 +29,7 @@ const Container = styled.div`
     }
   }
 `;
+
 const PokemonCard = ({ item }) => {
   const { list, setMore, setChosen } = useContext(PokeContext);
 
@@ -44,7 +46,7 @@ const PokemonCard = ({ item }) => {
         <img
           onClick={() => handleClick(item.id)}
           src={item.sprites.front_default}
-          alt="holis"
+          alt="pokemonImage"
         />
       </div>
       <div>
@@ -52,6 +54,9 @@ const PokemonCard = ({ item }) => {
           {" "}
           #{item.id} <span>{item.name}</span>
         </h1>
+      </div>
+      <div>
+        <PokemonType item={item} />
       </div>
     </Container>
   );
