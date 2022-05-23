@@ -4,11 +4,13 @@ import { PokeContext } from "../context/PokeContext";
 
 const Container = styled.form`
   display: flex;
+
   justify-content: center;
 `;
 const Input = styled.input`
   border-radius: 15px;
   padding: 0.5rem;
+  width: 30vw;
 `;
 const Search = () => {
   const { list, search, setSearch, setFilter } = useContext(PokeContext);
