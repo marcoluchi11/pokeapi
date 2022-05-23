@@ -1,4 +1,4 @@
-import { createContext, useState, useEffect } from "react";
+import { createContext, useState } from "react";
 export const PokeContext = createContext();
 const PokeProvider = ({ children }) => {
   const [data, setData] = useState([]);
