@@ -1,6 +1,7 @@
 import styled from "@emotion/styled";
 import { useContext, useEffect } from "react";
 import { PokeContext } from "../context/PokeContext";
+import Spinner from "./Spinner";
 
 const Container = styled.form`
   display: flex;
@@ -29,6 +30,7 @@ const Search = () => {
       }
     });
     setFilter(filterList);
+    //eslint-disable-next-line
   }, [search]);
   return (
     <Container>

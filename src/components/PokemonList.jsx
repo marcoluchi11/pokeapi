@@ -4,7 +4,7 @@ import { useContext, useEffect } from "react";
 import { PokeContext } from "../context/PokeContext";
 import PokemonCard from "./PokemonCard";
 import PokemonChosen from "./PokemonChosen";
-
+import Spinner from "./Spinner";
 const Container = styled.div`
   display: flex;
   justify-content: center;
@@ -16,16 +16,21 @@ const Container = styled.div`
 `;
 
 const PokemonList = () => {
-  const { list, traerDatos, more, chosen, filter } = useContext(PokeContext);
+  const { list, traerDatos, more, chosen, filter, loading, setLoading } =
+    useContext(PokeContext);
 
   useEffect(() => {
     if (list.length > 0) return;
+    setLoading(true);
     traerDatos();
-    // setList(list.sort((a, b) => a - b));
-    console.log(list);
+    setLoading(false);
+    //eslint-disable-next-line
   }, []);
+
   if (filter.length === 0)
-    return (
+    return loading ? (
+      <Spinner />
+    ) : (
       <Container>
         {more ? (
           <PokemonChosen chosen={chosen} />

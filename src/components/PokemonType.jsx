@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import { nanoid } from "nanoid";
 
 const ContainerTipos = styled.div`
   display: flex;
@@ -15,7 +16,9 @@ const PokemonType = ({ item }) => {
   return (
     <ContainerTipos>
       {item.types.map((elem) => (
-        <h3 className={`${elem.type.name}`}> {elem.type.name}</h3>
+        <h3 key={nanoid()} className={`${elem.type.name}`}>
+          {elem.type.name}
+        </h3>
       ))}
     </ContainerTipos>
   );

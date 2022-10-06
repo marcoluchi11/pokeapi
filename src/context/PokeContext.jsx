@@ -7,19 +7,23 @@ const PokeProvider = ({ children }) => {
   const [chosen, setChosen] = useState({});
   const [search, setSearch] = useState("");
   const [filter, setFilter] = useState([]);
+  const [loading, setLoading] = useState(false);
   const traerDatos = () => {
     let pokedata = [];
-    for (let i = 0; i <= 386; i++) {
-      if (i === 0) continue;
-      const fetchdata = async () => {
+
+    // if (i === 0) continue;
+    const fetchdata = async () => {
+      for (let i = 1; i <= 386; i++) {
         const url = ` https://pokeapi.co/api/v2/pokemon/${i}`;
         const rta = await fetch(url);
         const datos = await rta.json();
         pokedata.push(datos);
-        setList(pokedata);
-      };
-      fetchdata();
-    }
+      }
+      setList(pokedata);
+    };
+
+    fetchdata();
+    setLoading(false);
   };
 
   return (
@@ -27,6 +31,8 @@ const PokeProvider = ({ children }) => {
       value={{
         chosen,
         setChosen,
+        setLoading,
+        loading,
         more,
         filter,
         setFilter,
